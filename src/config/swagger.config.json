@@ -1,0 +1,28 @@
+{
+    "swaggerDefinition": {
+        "info": {
+            "title": "App Name API",
+            "description": "",
+            "version": "1.0.0",
+            "contact": {
+                "email": "irabestverie2016@gmail.com",
+                "name": "Best Verie"
+            },
+            "servers": [
+                "http://localhost:3000"
+            ]
+        },
+        "securityDefinitions": {
+            "bearerAuth": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "scheme": "bearer",
+                "in": "header"
+            }
+        }
+    },
+    "apis": [
+        "./src/routes/*.js",
+        "./src/model/*.js"
+    ]
+}
