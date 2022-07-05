@@ -14,12 +14,12 @@ app.use(cors());
 app.use(bodyParser.json());
 connectToDb();
 app.use(
-  "/api-docs",
+  "/v1/api-docs",
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocs, false, { docExpansion: "none" })
 );
 app.use("/api/employees", employeesRoute);
 app.use("/api/user", userRoute);
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(5000, () => {
+  console.log(`Server is running on port 5000`);
 });

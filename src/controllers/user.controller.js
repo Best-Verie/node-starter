@@ -12,6 +12,8 @@ exports.register = async (req, res) => {
       password: req.body.password,
     });
 
+    const userFound = await User.findOne({ email: req.body.email });
+    if (userFound) return res.status(400).send("User already exists");
     user = await user.save();
     res.status(201).send(user);
   } catch (error) {
@@ -28,11 +30,8 @@ exports.login = async (req, res) => {
       return res.status(400).send("Invalid email or password");
     const token = await user.generateAuthToken();
     return res.status(200).json({
-      status: "success",
-      data: {
-        user: user,
-        accessToken: token,
-      },
+      user: user,
+      accessToken: token,
     });
   } catch (error) {
     res.status(500).send(error.toString());

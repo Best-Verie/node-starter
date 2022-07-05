@@ -4,9 +4,8 @@ const {
   getEmployees,
   getEmployeeByEmail,
 } = require("../controllers/employee.controller");
+const { authorize, protect } = require("../middleware/auth.middleware");
 const router = express.Router({ mergeParams: true });
-
-
 
 /**
  * @swagger
@@ -45,7 +44,7 @@ router.get("/", getEmployees);
  *      500:
  *        description: Server error
  */
-router.post("/", createEmployee);
+router.post("/", protect, createEmployee);
 
 /**
  * @swagger

@@ -43,3 +43,7 @@ exports.validateData = (data) => {
 
 const Employee = mongoose.model("Employee", employeeSchema);
 module.exports.Employee = Employee;
+
+/**
+ *
+ */

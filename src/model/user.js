@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { RoleEnum } = require("../enum/enums");
 // require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 /**
@@ -52,8 +53,7 @@ const userSchema = new mongoose.Schema(
 
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  console.log("key", process.env.JWT_KEY);
-  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_KEY);
+  const token = jwt.sign({ _id: user._id.toString() }, "secret");
   return token;
 };
 

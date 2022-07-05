@@ -19,7 +19,10 @@
                 "scheme": "bearer",
                 "in": "header"
             }
-        }
+        },
+         "security":[
+                { "bearerAuth": [] }
+            ]
     },
     "apis": [
         "./src/routes/*.js",
